@@ -99,7 +99,7 @@ Include a short **README** at the repo root with:
 
 
 
-## Nice-to‑Haves (pick 0–3 if time allows)
+## Nice-to‑Haves ( not mandatory )
 
 * **Persistence** via SQLite + Prisma (or Mongo) instead of in‑memory/file
 * **Minimal admin auth** (e.g., `ADMIN_TOKEN` Bearer for `/dashboard` data)
