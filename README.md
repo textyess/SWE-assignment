@@ -1,112 +1,88 @@
-# Take‑Home Assignment — **Feedback Collector for SaaS Trial Users**
+# Home Assignment — Product Engineer
 
-**Timebox:** 2–3 hours total (hard cap).
+## Context
 
-**Tech:** Node.js (Express, TypeScript) for backend; React + Next.js (TypeScript) for frontend.
+TextYess is the AI-first CRM for e-commerce. We help brands build real relationships with their customers — automating and personalizing conversations across WhatsApp, email, and voice, and connecting every interaction to revenue.
 
-**Repo shape (required):** One GitHub repo with exactly two folders at root:
+Today, each channel lives in its own silo. WhatsApp conversations are in one place, email campaigns are in another, and voice call records are somewhere else entirely. Operators who need to understand a customer's full history have to jump between views and piece things together manually.
 
-```
-/backend   # Express + TypeScript API
-/frontend  # Next.js + TypeScript app
-```
-
-**AI tooling (required):** Please use AI coding assistants (e.g., Cursor, Copilot, ChatGPT) to speed up. In your README, add a short note on *where/how* you used AI and any prompts that were especially helpful.
+Your task is to fix that.
 
 ---
 
-## Goal
+## The Task
 
-Build a minimal product to collect structured feedback from trial users and provide a lightweight internal view with a summary. Think of a tiny slice of a system like **TextYess** would use to measure early product fit.
+**Build a Unified Inbox.**
 
----
+Design and implement a feature that brings conversations from multiple channels — at minimum WhatsApp, email, and voice — into a single, coherent inbox experience.
 
-## User Stories (MVP)
-
-1. **As a trial user**, I can submit feedback with:
-
-   * Rating (1–5 stars, required)
-   * Short comment (required, max 280 chars)
-   * Email (optional)
-2. **As a teammate**, I can see:
-
-   * A simple dashboard with the **average rating**, **total submissions**, and **rating distribution** (1–5)
-   * A **paginated list** of feedback (most recent first), with quick filters (e.g., by min rating)
-
-> Keep it tiny, fast, and shippable within 2–3 hours.
+This is intentionally open-ended. We want to see how you think about a product problem before you write a single line of code. A good solution requires making deliberate choices about data modeling, UX, and scope — not just wiring up endpoints.
 
 ---
 
-## Requirements
+## Stack
 
-### Backend (Express + TypeScript)
+Our codebase is a TypeScript monorepo using **pnpm workspaces** and **Turborepo**. We work with:
 
-* Expose these endpoints (JSON):
+- **Backend** — NestJS, MongoDB (Mongoose), REST
+- **Frontend** — Next.js, Tailwind CSS, shadcn/ui, React Query
+- **Shared** — packages for models, UI components, and locales
 
-  * `POST /api/feedback` &rarr; creates the feedback and returns it
+We prefer you work within this stack, but it is not a hard requirement. If you are more productive in a different stack, use it — just be ready to explain the tradeoff. Whatever you choose, keep the dependency footprint lean.
 
-  * `GET /api/feedback` &rarr; returns all the feedbacks with pagination
+---
 
-  * `GET /api/feedback/summary` &rarr; returns summary analytics of feedbacks
+## Guidelines
 
-    * **Returns**: `{ count: number, avgRating: number, distribution: {1: number,2: number,3: number,4: number,5: number}, lastFeedbackAt?: ISOString }`
-* **Validation**: Use any validation approach (e.g., Zod, class-validator, custom) to enforce payload shape & limits.
-* **Storage**: To stay within time — you may use **in‑memory** storage or a simple **JSON file**. (Bonus points section has a DB option.)
-* **Type safety**: Define a `Feedback` TypeScript interface used by controllers + shared types.
+A few things to keep in mind as you approach this:
 
+**Think in product terms first.** Before modeling a schema or building a component, ask what an operator actually needs when they open the inbox. What makes a conversation actionable? What makes it easy to triage?
 
+**Design for heterogeneity.** WhatsApp, email, and voice are structurally different. A WhatsApp message has buttons. An email has a subject and thread. A voice call has a transcript and a duration. Your data model needs to handle this without forcing everything into the same shape.
 
-### Frontend (Next.js + TS)
+**Scope deliberately.** Two to three days is not enough to build everything. Decide what the core of the feature is and build that well. A focused, working MVP is better than an ambitious half-finished one. Document what you would build next and why.
 
-* Pages:
+**The UI matters.** This is a product you would use every day. The inbox should feel fast, clear, and easy to scan. Think about information hierarchy: what does an operator need to see at a glance vs on demand?
 
-  * `/feedback` — Submit form with client-side validation; on success, show a friendly confirmation (inline or toast).
-  * `/dashboard` — Show **summary** (avg, total, distribution) and **list**:
+**Write code you would ship.** We will read your code as closely as we watch what you built. Structure, naming, and separation of concerns matter.
 
-    * Pagination controls (prev/next)
-    * Filter: min rating (e.g., dropdown)
-* Fetch from the backend endpoints above. (Hardcode the API URL via `.env.local`.)
-* Keep UI simple and clean (Tailwind optional). Accessibility basics (labels, button text) appreciated.
+---
 
-**Suggested folder structure:**
+## Deliverables
 
+- A working full-stack feature inside the monorepo structure
+- A short written note (can be in the PR description or a separate file) covering:
+  - The product decisions you made and why
+  - What you cut and what you would build next
+  - Any assumptions you made about the business or the users
 
-## Getting Started (what we’ll run)
+---
 
-### Backend
+## What We Evaluate
+
+- **Product thinking** — did you make the right tradeoffs? does the result solve the actual problem?
+- **Backend design** — is the data model clean and extensible? are the APIs well-structured?
+- **Frontend quality** — is the UI functional and thoughtful? does it handle real-world edge cases?
+- **Code clarity** — is the code easy to read, maintain, and extend?
+- **Communication** — can you clearly explain the choices you made?
+
+---
+
+## Setup
 
 ```bash
-cd backend
-npm i
-npm run dev    # or: npm run start
-# default: http://localhost:4000
+# Install dependencies
+pnpm install
+
+# Start the API
+pnpm --filter api dev
+
+# Start the web app
+pnpm --filter web dev
 ```
 
-### Frontend
-
-```bash
-cd frontend
-npm i
-npm run dev
-# default: http://localhost:3000
-```
-
-
-Include a short **README** at the repo root with:
-
-* How to run both apps
-* Notes on trade‑offs & anything unfinished
-
-
-
-## Nice-to‑Haves ( not mandatory )
-
-* **Persistence** via SQLite + Prisma (or Mongo) instead of in‑memory/file
-* **Minimal admin auth** (e.g., `ADMIN_TOKEN` Bearer for `/dashboard` data)
-* **Add sentiment with AI**: Add sentiment analysis on feedback by making a simple tool call to an LLM.
-
+Refer to the individual app READMEs for environment variable requirements.
 
 ---
 
-
-Good luck and have fun! 🎯
+Good luck.
