@@ -4,7 +4,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
-    content: ["./src/**/*.{ts,tsx}"],
+    content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}", "../../packages/ui/src/**/*.{ts,tsx}"],
     theme: {
         container: {
             center: true,
@@ -20,7 +20,7 @@ module.exports = {
             },
             colors: {
                 slate: {
-                    100: "#F7F7F7",
+                    100: "#F5F3F0",
                 },
                 primary: {
                     DEFAULT: "#503ADC",
@@ -41,13 +41,9 @@ module.exports = {
                     foreground: "#FFF",
                 },
                 background: {
-                    DEFAULT: "#F7F7F7",
+                    DEFAULT: "#F9F8F6",
                 },
                 accent: "#f4f4f5",
-                popover: {
-                    DEFAULT: "#FFF",
-                    foreground: "#000",
-                },
                 destructive: {
                     DEFAULT: "#F72B27",
                     foreground: "#FFF",
@@ -74,6 +70,10 @@ module.exports = {
                     800: "#487F03",
                     900: "#386901",
                 },
+                popover: {
+                    DEFAULT: "#FFF",
+                    foreground: "#000",
+                },
                 warning: {
                     DEFAULT: "#FC9105",
                     900: "#782F00",
@@ -88,15 +88,16 @@ module.exports = {
                 },
                 neutral: {
                     DEFAULT: "#9E9E9E",
-                    100: "#F7F7F7",
-                    200: "#F1F1F1",
-                    300: "#DDDDDD",
-                    400: "#CCCCCC",
-                    500: "#9E9E9E",
-                    600: "#707070",
-                    700: "#555555",
-                    800: "#424242",
-                    900: "#323232",
+                    50: "#FAF9F7",
+                    100: "#F5F3F0",
+                    200: "#E8E6E3",
+                    300: "#DAD8D5",
+                    400: "#B5B3B0",
+                    500: "#8F8D8A",
+                    600: "#6B6966",
+                    700: "#4A4845",
+                    800: "#363432",
+                    900: "#282624",
                 },
                 error: {
                     DEFAULT: "#F72B27",
@@ -114,6 +115,18 @@ module.exports = {
             },
             boxShadow: {
                 custom: "0 0 0 3px hsla(248, 70%, 55%, 25%), 0 0 0 1px hsla(248, 70%, 55%, 50%)",
+                card: "0 0 0 1px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.04)",
+                "card-hover": "0 0 0 1px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.06), 0 12px 24px rgba(0,0,0,0.06)",
+                "primary-glow": "0 1px 2px rgba(80, 58, 220, 0.2), 0 4px 12px rgba(80, 58, 220, 0.15)",
+                "input-focus": "0 0 0 2px rgba(80,58,220,0.15), 0 1px 3px 0 rgba(80,58,220,0.1)",
+            },
+            transitionTimingFunction: {
+                "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+            },
+            transitionDuration: {
+                fast: "120ms",
+                normal: "200ms",
+                slow: "350ms",
             },
             spacing: {
                 "sidebar-width": "288px",
@@ -139,16 +152,19 @@ module.exports = {
                         "-ms-transform": "scale(0.9)",
                         transform: "scale(0.9)",
                     },
+
                     "25%": {
                         "-webkit-transform": "scale(1)",
                         "-ms-transform": "scale(1)",
                         transform: "scale(1)",
                     },
+
                     "60%": {
                         "-webkit-transform": "scale(0.9)",
                         "-ms-transform": "scale(0.9)",
                         transform: "scale(0.9)",
                     },
+
                     "100%": {
                         "-webkit-transform": "scale(0.9)",
                         "-ms-transform": "scale(0.9)",
@@ -221,6 +237,26 @@ module.exports = {
                         boxShadow: "0 0 0 0 rgba(80, 58, 220, 0)",
                     },
                 },
+                voiceOrb: {
+                    "0%, 100%": { transform: "scale(1)", opacity: "0.35" },
+                    "50%": { transform: "scale(1.06)", opacity: "0.55" },
+                },
+                voiceOrbInner: {
+                    "0%, 100%": { transform: "scale(1) rotate(0deg)" },
+                    "50%": { transform: "scale(1.02) rotate(180deg)" },
+                },
+                voiceWave1: {
+                    "0%": { transform: "scale(1)", opacity: "0.25" },
+                    "100%": { transform: "scale(1.4)", opacity: "0" },
+                },
+                voiceWave2: {
+                    "0%": { transform: "scale(1)", opacity: "0.18" },
+                    "100%": { transform: "scale(1.55)", opacity: "0" },
+                },
+                voiceWave3: {
+                    "0%": { transform: "scale(1)", opacity: "0.12" },
+                    "100%": { transform: "scale(1.7)", opacity: "0" },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
@@ -233,6 +269,8 @@ module.exports = {
                 "fade-in": "fade-in 0.4s ease-out",
                 slideInUp: "slideInUp 0.4s ease-out forwards",
                 "pulse-once": "pulse-once 0.6s ease-out",
+                "voice-orb": "voiceOrb 5s ease-in-out infinite",
+                "voice-orb-inner": "voiceOrbInner 8s ease-in-out infinite",
             },
             typography: {
                 primary: {
