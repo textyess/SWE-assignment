@@ -14,7 +14,7 @@ Your task is to fix that.
 
 **Build a Unified Inbox.**
 
-Design and implement a feature that brings conversations from multiple channels — at minimum WhatsApp, email, and voice — into a single, coherent inbox experience.
+Design and implement a feature that brings conversations from multiple channels — at minimum WhatsApp, email, voice is a bonus  — into a single, coherent inbox experience.
 
 This is intentionally open-ended. We want to see how you think about a product problem before you write a single line of code. A good solution requires making deliberate choices about data modeling, UX, and scope — not just wiring up endpoints.
 
@@ -48,6 +48,14 @@ A few things to keep in mind as you approach this:
 
 ---
 
+## Requirements
+
+- **Use coding agents for the majority of the work.** This is an AI-native role — we expect you to leverage AI coding agents (Cursor, Claude Code, Copilot, or equivalent) as your primary development tool. How you prompt, direct, and collaborate with agents is part of what we evaluate.
+- **Timeline is 3 days** from the moment you receive this assignment.
+- **For any clarification**, reach out to Valdo directly on LinkedIn or WhatsApp. Do not hesitate — a good question is a signal too.
+
+---
+
 ## Deliverables
 
 - A working full-stack feature inside the monorepo structure
@@ -65,23 +73,6 @@ A few things to keep in mind as you approach this:
 - **Frontend quality** — is the UI functional and thoughtful? does it handle real-world edge cases?
 - **Code clarity** — is the code easy to read, maintain, and extend?
 - **Communication** — can you clearly explain the choices you made?
-
----
-
-## Setup
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start the API
-pnpm --filter api dev
-
-# Start the web app
-pnpm --filter web dev
-```
-
-Refer to the individual app READMEs for environment variable requirements.
 
 ---
 
