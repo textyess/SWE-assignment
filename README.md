@@ -14,7 +14,9 @@ Your task is to fix that.
 
 **Build a Unified Inbox.**
 
-Design and implement a feature that brings conversations from multiple channels — at minimum WhatsApp, email, voice is a bonus  — into a single, coherent inbox experience.
+Design and implement a feature that brings conversations from multiple channels — at minimum WhatsApp, email, voice and onsite are a bonus  — into a single, coherent inbox experience.
+
+To get a sense of how the current inbox works, here is a short walkthrough of the existing product: [Inbox overview →](https://www.loom.com/share/b0634150ce3e4e329fb751bd4829d46d)
 
 This is intentionally open-ended. We want to see how you think about a product problem before you write a single line of code. A good solution requires making deliberate choices about data modeling, UX, and scope — not just wiring up endpoints.
 
