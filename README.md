@@ -1,4 +1,4 @@
-# Home Assignment — Product Engineer
+# Home Assignment — Software Engineer (AI native)
 
 ## Context
 
