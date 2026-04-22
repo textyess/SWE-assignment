@@ -30,6 +30,8 @@ Our codebase is a TypeScript monorepo using **pnpm workspaces** and **Turborepo*
 - **Frontend** — Next.js, Tailwind CSS, shadcn/ui, React Query
 - **Shared** — packages for models, UI components, and locales
 
+We also provide a `tailwind.config.js` with our design tokens already set up. Use it as a reference to stay consistent with our visual language.
+
 We prefer you work within this stack, but it is not a hard requirement. If you are more productive in a different stack, use it — just be ready to explain the tradeoff. Whatever you choose, keep the dependency footprint lean.
 
 ---
